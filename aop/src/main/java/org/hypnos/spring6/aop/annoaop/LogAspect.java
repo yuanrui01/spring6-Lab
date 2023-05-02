@@ -17,7 +17,7 @@ public class LogAspect {
     //切入点表达式: execution(访问修饰符 增强方法返回类型 增强方法所在类全路径.方法名称(方法参数))
     //通知类型：
     // 前置 @Before(value="切入点表达式配置切入点")
-    //@Before(value = "execution(* com.atguigu.spring6.aop.annoaop.CalculatorImpl.*(..))")
+    //@Before(value = "execution(* org.hypnos.spring6.aop.annoaop.CalculatorImpl.*(..))")
     @Before(value = "execution(public int org.hypnos.spring6.aop.annoaop.CalculatorImpl.*(..))")
     public void beforeMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
@@ -26,7 +26,7 @@ public class LogAspect {
     }
 
     // 后置 @After()
-    //@After(value = "com.atguigu.spring6.aop.annoaop.LogAspect.pointCut()")
+    //@After(value = "org.hypnos.spring6.aop.annoaop.LogAspect.pointCut()")
     @After(value = "pointCut()")
     public void afterMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
