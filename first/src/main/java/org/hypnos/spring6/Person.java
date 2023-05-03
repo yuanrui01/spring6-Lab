@@ -2,10 +2,16 @@ package org.hypnos.spring6;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.hypnos.spring6.validator.TestDTO;
+import org.hypnos.spring6.validator.two.ValidationConfig;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
+import java.net.MalformedURLException;
 
 /**
  * @author yuanrui
@@ -13,6 +19,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @date 2023/4/30-20:53
  */
 @Slf4j
+@Validated
 public class Person {
 
     public void hello(){
@@ -25,6 +32,16 @@ public class Person {
         person.hello();
         
         log.error("淄博烧烤");
+    }
+
+    public static void fileCheck(@Valid TestDTO file){
+        System.out.println(312312);
+    }
+
+    public static void main(String[] args) throws MalformedURLException {
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext(ValidationConfig.class);
+        fileCheck(new TestDTO());
     }
 
 }
